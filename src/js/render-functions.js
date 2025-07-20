@@ -1,8 +1,12 @@
-import { list, loader } from "../main";
-export default function createGallery(images) {
+import { list, loader, } from "../main"; 
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
-    return images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads, id }) => {
-       return `
+let lightbox;
+
+export default function createGallery(images) {
+    const galleryMarkup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads, id }) => {
+        return `
         <li class="list-item">
             <a class="list-link" href="${largeImageURL}">
                 <img data-id="${id}" class="image-item" alt="${tags}" src="${webformatURL}">
@@ -24,6 +28,19 @@ export default function createGallery(images) {
         </li>
         `
     }).join("");
+    list.innerHTML = galleryMarkup;
+    if (lightbox) {
+                lightbox.refresh();
+            } else {
+                lightbox = new SimpleLightbox('.gallery a', {
+                    captions: true,
+                    captionSelector: 'img',
+                    captionsData: 'alt',
+                    captionPosition: 'bottom',
+                    captionDelay: 250,
+                    fadeSpeed: 100,
+                })
+            }
 };
 
 
