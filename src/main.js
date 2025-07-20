@@ -1,13 +1,18 @@
 import { getImagesByQuery } from "./js/pixabay-api.js";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+import { hideLoader } from "./js/render-functions.js";
 
 export const form = document.querySelector(".form");
 export const input = document.querySelector(".search-input");
 export const list = document.querySelector(".gallery");
 export const loader = document.querySelector(".loader");
 
+document.addEventListener("DOMContentLoaded", () => {
+  hideLoader();
+});
 form.addEventListener("submit", handleSubmit);
+
 
 function handleSubmit(event) {
     event.preventDefault();
