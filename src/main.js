@@ -4,8 +4,8 @@ import "izitoast/dist/css/iziToast.min.css";
 
 export const form = document.querySelector(".form");
 export const input = document.querySelector(".search-input");
-export const list = document.querySelector(".list-image");
-const loader = document.querySelector(".loader");
+export const list = document.querySelector(".gallery");
+export const loader = document.querySelector(".loader");
 
 form.addEventListener("submit", handleSubmit);
 
