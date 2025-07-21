@@ -1,6 +1,5 @@
 import { getImagesByQuery } from "./js/pixabay-api.js";
-import createGallery from "./js/render-functions.js";
-import { hideLoader, clearGallery, showLoader } from "./js/render-functions.js";
+import {createGallery, hideLoader, clearGallery, showLoader } from "./js/render-functions.js";
 
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
@@ -9,8 +8,6 @@ export const form = document.querySelector(".form");
 export const input = document.querySelector(".search-input");
 export const list = document.querySelector(".gallery");
 export const loader = document.querySelector(".loader");
-
-let lightbox = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   hideLoader();
@@ -26,7 +23,6 @@ function handleSubmit(event) {
         iziToast.error({
             message: 'Sorry, there are no images matching your search query. Please try again!',
         });
-        form.reset();
         return;
     }
 

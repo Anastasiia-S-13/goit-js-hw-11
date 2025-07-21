@@ -4,7 +4,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 let lightbox;
 
-export default function createGallery(images) {
+export function createGallery(images) {
     const galleryMarkup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads, id }) => {
         return `
         <li class="list-item">
